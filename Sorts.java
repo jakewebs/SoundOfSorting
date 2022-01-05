@@ -9,7 +9,7 @@ public class Sorts {
         this.comparisons = 0;
     }
 
-    public static void bubbleSort(double[] nums) {
+    public void bubbleSort(double[] nums) {
         comparisons = 0;
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length - i - 1; j++) {
@@ -28,7 +28,7 @@ public class Sorts {
         System.out.println("Comparisons: " + comparisons);
     }
 
-    public static void insertionSort(double[] nums) {
+    public void insertionSort(double[] nums) {
         comparisons = 0;
         double min = nums[0];
         int index = 0;
@@ -61,7 +61,7 @@ public class Sorts {
         System.out.println("Comparisons: " + comparisons);
     }
 
-    public static void mergeSort(double[] nums) {
+    public void mergeSort(double[] nums) {
         comparisons = 0;
         ms(nums, 0, nums.length - 1);
         System.out.println("Comparisons: " + comparisons);
@@ -117,7 +117,7 @@ public class Sorts {
         }
     }
 
-    public static void quickSort(double[] nums) {
+    public void quickSort(double[] nums) {
         comparisons = 0;
         qs(nums, 0, nums.length - 1);
         System.out.println("Comparisons: " + comparisons);
@@ -152,7 +152,7 @@ public class Sorts {
         return i + 1; 
     }
 
-    public static void radixSort(double[] nums) {
+    public void radixSort(double[] nums) {
         // LSD radix
         int K = 4; 
         double m = nums[0];

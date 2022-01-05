@@ -43,7 +43,7 @@ public class Tone {
     /**
      *  Calculates the frequency to play a sound at given @param color and generates the sound.
      */
-    public static void generateSound(double color) {
+    public void generateSound(double color) {
         double hz = (slope * color) + min_freq;
         double[] a = tone(hz);
         StdAudio.play(a);
