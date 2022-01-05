@@ -58,6 +58,18 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             t.generateSound(arr[i]);
         }
+        System.out.println();
+
+        System.out.println("Radix sort time");
+        arr = new double[15];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = randColor();
+        }
+        s.radixSort(arr);
+        System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            t.generateSound(arr[i]);
+        }
         System.out.println(); 
 	}
 

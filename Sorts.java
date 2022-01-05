@@ -151,4 +151,41 @@ public class Sorts {
         nums[right] = temp;
         return i + 1; 
     }
+
+    public static void radixSort(double[] nums) {
+        // LSD radix
+        int K = 4; 
+        double m = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > m) {
+                m = nums[i];
+            }
+        }
+        int D = (int) (Math.log(m + 1) / Math.log(4));
+        double[] temp = new double[nums.length];
+        int d = 0;
+        while (d < D) {
+            double[] count = new double[10];
+            for (int i = 0; i < count.length; i++) {
+                count[i] = 0;
+            }
+            for (int i = 0; i < nums.length; i++) {
+                count[(int)(nums[i] / (Math.pow(10, d))) % 10]++;
+            }
+            // Give count[i] the correct starting index based on counts found in last loop
+            for (int i = 1; i < 10; i++) {
+                count[i] += count[i - 1];
+            }
+            for (int i = nums.length - 1; i >= 0; i--) {
+              temp[(int) count[(int)(nums[i] / (Math.pow(10, d))) % 10] - 1] = nums[i];
+              count[(int)(nums[i] / (Math.pow(10, d))) % 10]--;
+            }
+            for (int i = 0; i < nums.length; i++) {
+                tone.generateSound(temp[i]);
+                nums[i] = temp[i];
+            }
+            d++;
+        }
+
+    }
 }
