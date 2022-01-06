@@ -1,12 +1,3 @@
-
-
-/******************************************************************************
- *  Compilation:  javac -classpath .:stdlib.jar Tone.java
- *  Execution:    java -classpath .:stdlib.jar Tone r g b
- *
- *  Play a note of the given freqency for the given duration.
- *
- ******************************************************************************/
 public class Tone {
     private static double min_freq;
     private static double max_freq;
@@ -30,7 +21,7 @@ public class Tone {
      * @Source: https://introcs.cs.princeton.edu/java/21function/Tone.java.html.
      */
     private static double[] tone(double hz) { 
-        System.out.println("Freq: " + hz);
+        //System.out.println("Freq: " + hz);
         int n = (int) (StdAudio.SAMPLE_RATE * duration);
         double[] a = new double[n+1];
         for (int i = 0; i <= n; i++) {
@@ -44,6 +35,7 @@ public class Tone {
      *  Calculates the frequency to play a sound at given @param color and generates the sound.
      */
     public void generateSound(double color) {
+        System.out.println("Color: " + color);
         double hz = (slope * color) + min_freq;
         double[] a = tone(hz);
         StdAudio.play(a);

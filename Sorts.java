@@ -1,12 +1,15 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 public class Sorts {
     private static Tone tone;
     private static int comparisons;
     /**
      * Initializes Sort with a @param tone instance to play tones while sorting.    
      */
-    public Sorts(Tone tone) {
-        this.tone = tone;
-        this.comparisons = 0;
+    public Sorts(Tone t) {
+        tone = t;
+        comparisons = 0;
     }
 
     public void bubbleSort(double[] nums) {
@@ -152,15 +155,9 @@ public class Sorts {
         return i + 1; 
     }
 
-    public void radixSort(double[] nums) {
+    public void LSDRadixSort(double[] nums) {
         // LSD radix
-        int K = 4; 
-        double m = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > m) {
-                m = nums[i];
-            }
-        }
+        double m = getMax(nums);
         int D = (int) (Math.log(m + 1) / Math.log(4));
         double[] temp = new double[nums.length];
         int d = 0;
@@ -187,5 +184,56 @@ public class Sorts {
             d++;
         }
 
+    }
+
+    private static double getMax(double[] nums) {
+        double m = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > m) {
+                m = nums[i];
+            }
+        }
+        return m;
+    }
+    
+    public void MSDRadixSort(double[] nums) {
+        double m = getMax(nums);
+        int D = (int) (Math.log10(m) + 1);
+        System.out.println(D);
+        msdr(nums, 0, nums.length - 1, D);
+    }
+
+    
+    private static void msdr(double[] nums, int start, int end, int D) {
+        //for (int i = 0; i < nums.length; i++) {
+            //System.out.print(nums[i] + " ");
+        //}
+        //System.out.println("\n" + start + " " + end);
+        if (start + 1 >= end || D < 1) return;
+        int[] count = new int[11];
+        Arrays.fill(count, 0);
+        for (int i = 0; i < nums.length; i++) {
+            int digit = ((int) (nums[i] / Math.pow(10, D - 1))) % 10;
+            count[digit + 1]++;
+        }
+        for (int i = 0; i < 10; i++) {
+            count[i + 1] += count[i]; // starting index for each 
+        }
+        double[] temp = new double[nums.length];
+        for (int i = start; i <= end; i++) {
+            int digit = (int) (nums[i] / Math.pow(10, D - 1) % 10);
+            temp[count[digit]++] = nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = temp[i];
+        }
+        for (int i = 0; i < 10; i++) {
+            msdr(nums, start + count[i], start + count[i + 1], D - 1);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i] + " ");
+        }
+        System.out.println("\n");
     }
 }
