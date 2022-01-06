@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sound of Sorting</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src = "sketch.js"></script>
+    <script src = "sorts.js"></script>
+    <script src = "p5.sound.js"></script>
+</head>
+<body>
+    
+    <script>var arr = [234, 43, 55, 63,  5, 6, 235, 547, 781, 489, 398, 3092, 479, 34];</script>
+    <h1 onclick = LSDRadixSort(arr)>Sort</h1>
+    <h1 onclick = shuff(arr)>Shuffle</h1>
+    <h1 onclick = reset()>Clear</h1>
+    <h2 id = "stuff"></h2>
+    <script>document.getElementById("stuff").innerHTML = arr</script>
+    
+ </body>
