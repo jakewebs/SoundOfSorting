@@ -6,12 +6,20 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
     <script src = "sketch.js"></script>
     <script src = "sorts.js"></script>
-    <script src = "p5.sound.js"></script>
+   <!--- <script src = "p5.sound.js"></script> -->
 </head>
 <body>
     
-    <script>var arr = [234, 43, 55, 63,  5, 6, 235, 547, 781, 489, 398, 3092, 479, 34];</script>
-    <h1 onclick = LSDRadixSort(arr)>Sort</h1>
+    <script>var arr = makeArr(10);</script>
+    <!-- <h1 onclick = bubbleSort(arr)>Sort</h1> -->
+    <h1 id = "header">Choose Your Sort</h1>
+    <div id = "sorts">
+        <button id = "bubble" type = "button" onclick = bubbleSort(arr)>Bubble Sort</button>
+        <button id = "insertion" type = "button" onclick = insertionSort(arr)>Insertion Sort</button>
+        <button id = "quick" type = "button" onclick = quickSort(arr)>Quick Sort</button>
+        <button id = "merge" type = "button" onclick = mergeSort(arr)>Merge Sort</button>
+        <button id = "radix" type = "button" onclick = LSDRadixSort(arr)>Radix Sort</button>
+    </div>
     <h1 onclick = shuff(arr)>Shuffle</h1>
     <h1 onclick = reset()>Clear</h1>
     <h2 id = "stuff"></h2>
