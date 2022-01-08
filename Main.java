@@ -5,7 +5,10 @@
  *  Play a note of the given freqency for the given duration.
  *
  ******************************************************************************/
+import java.util.Random;
 public class Main {
+    static Sorts sorts;
+    static Tone tone;
 	public static void main(String[] args) {
 		/*int r = Integer.parseInt(args[0]);
         int g = Integer.parseInt(args[1]);
@@ -13,12 +16,12 @@ public class Main {
         RGB color = new RGB(r, g, b);
         System.out.println("Cur: " + color.getColor());
         Tone t = new Tone(200, 2000, 0.25);
-        t.generateSound(color.getColor());
-        Tone t = new Tone(200, 2000, 0.2);
-        Sorts s = new Sorts(t); */
+        t.generateSound(color.getColor()); */
+        tone = new Tone(200, 2000, 0.2);
+        sorts = new Sorts(tone); 
         
         
-        runSort(5, 5);
+        runSort(3, 15);
 	}
 
     /**
@@ -57,6 +60,12 @@ public class Main {
             tone.generateSound(arr[i]);
         }
         System.out.println();
+    }
+
+    private static RGB randColor() {
+        Random rand = new Random();
+        RGB col = new RGB(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+        return col;
     }
 
 }
